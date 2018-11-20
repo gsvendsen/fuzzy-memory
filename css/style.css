@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  padding: 50px 0 50px 0;
+  box-sizing:border-box;
+}
+
+.memory-board {
+  background-color: lightyellow;
+  margin:0;
+  padding:0;
+  width:540px;
+
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  align-items: center;
+  height:540px;
+}
+
+.memory-card {
+  width:100px;
+  height:100px;
+  background-color: black;
+  background-size:cover;
+  opacity:1;
+  transition:1s;
+}
+
+.memory-card-container {
+  background-color: grey;
+  margin:0 5px 0 5px;
+
+}
+
+div.hidden {
+  opacity:0;
+}
+
+
+[data-card-type="heart"] {
+  background-image:url('http://pngimg.com/uploads/heart/heart_PNG51324.png');
+}
+
+[data-card-type="test"] {
+  background-image:url('http://www.stickpng.com/assets/images/5a4613eed099a2ad03f9c996.png');
+}
+
+[data-card-type="dog"] {
+  background-image:url('https://dumielauxepices.net/sites/default/files/dog-clipart-transparent-background-505594-8388364.png');
+}
+
+[data-card-type="cat"] {
+  background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18myNuamD0GqdIGAqfL_vqCPME8aIcDpp28Qjdjk-D8xIzXzV');
+}
+
+[data-card-type="dollar"] {
+  background-image:url('http://pluspng.com/img-png/dollar-png-dollar-png-image-1824.png');
+}
+
+[data-card-type="horse"] {
+  background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ33yiQvXBdNbv1VnVymaDY1KV7Z9hszm8EnWo05sbHLd90ayW0');
+}
+
+[data-card-type="apple"] {
+  background-image:url('https://ecdn.teacherspayteachers.com/thumbitem/Apple-PNG-3689800-1520268696/original-3689800-1.jpg');
+}
+
+[data-card-type="skull"] {
+  background-image:url('https://pre00.deviantart.net/86f1/th/pre/i/2013/332/b/6/spooky_skeleton_03_png_stock_by_jumpfer_stock-d6vz7i7.png');
+}
