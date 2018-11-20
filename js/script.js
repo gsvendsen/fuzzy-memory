@@ -25,7 +25,6 @@ const randomProperty =  (obj)=> {
 };
 
 for(i=0; i <= cardCount; i++){
-
   const newCardContainer = document.createElement('div')
   const newCard = document.createElement('div');
 
@@ -40,3 +39,14 @@ for(i=0; i <= cardCount; i++){
   newCard.dataset.cardType = randomCardType;
   memoryBoard.appendChild(newCardContainer);
 }
+
+const memoryCards = document.querySelectorAll('.memory-card-container');
+
+memoryCards.forEach((memoryCard) => {
+  memoryCard.addEventListener('click', ()=>{
+    
+    let memoryChild = memoryCard.children[0];
+
+    memoryChild.classList.remove('hidden');
+  })
+})
