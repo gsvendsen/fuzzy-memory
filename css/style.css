@@ -43,6 +43,10 @@ div.hidden {
   opacity:0;
 }
 
+div.finished {
+  opacity:1;
+}
+
 
 [data-card-type="heart"] {
   background-image:url('http://pngimg.com/uploads/heart/heart_PNG51324.png');
