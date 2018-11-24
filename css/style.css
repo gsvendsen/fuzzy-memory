@@ -134,34 +134,34 @@ div.finished {
 }
 
 
-[data-card-type="heart"] {
+[data-card-type="one"] {
   background-image: linear-gradient(to top right, #04C0A9, #06DEC4);
 }
 
-[data-card-type="test"] {
+[data-card-type="two"] {
   background-image: linear-gradient(to top right, #1C2A30, #24353C);
 }
 
-[data-card-type="dog"] {
+[data-card-type="three"] {
   background-image: linear-gradient(to top right, #58043E, #84024A);
 }
 
-[data-card-type="cat"] {
+[data-card-type="four"] {
   background-image: linear-gradient(to top right, #FDAB87, #FECA8A);
 }
 
-[data-card-type="dollar"] {
+[data-card-type="five"] {
   background-image: linear-gradient(to top right, #FFFFFF, #0FFEE1);
 }
 
-[data-card-type="horse"] {
+[data-card-type="six"] {
   background-image: linear-gradient(to top right, #07C17A, #02F392);
 }
 
-[data-card-type="apple"] {
+[data-card-type="seven"] {
   background-image: linear-gradient(to top right, #490045, #F23D49);
 }
 
-[data-card-type="skull"] {
+[data-card-type="eight"] {
   background-image: linear-gradient(to top right, #FFFF, #0000);
 }

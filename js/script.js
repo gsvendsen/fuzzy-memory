@@ -9,14 +9,14 @@ let isRestarting = false;
 
 // Template object of memory board map
 const cardTypes = {
-  'heart': 0,
-  'skull': 0,
-  'test': 0,
-  'dog': 0,
-  'cat': 0,
-  'dollar': 0,
-  'horse': 0,
-  'apple': 0,
+  'one': 0,
+  'two': 0,
+  'three': 0,
+  'four': 0,
+  'five': 0,
+  'six': 0,
+  'seven': 0,
+  'eight': 0,
 }
 
 // Default new object copied from the template
