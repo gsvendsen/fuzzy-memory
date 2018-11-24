@@ -43,9 +43,12 @@ body {
 }
 
 .memory-card-container {
-  background-color: grey;
   margin:0 5px 0 5px;
-
+  background-color:black;
+  position: relative;
+  border-radius: 10%;
+  opacity:0;
+  animation:fade-in 1s 5s forwards;
 }
 
 div.hidden {
@@ -54,7 +57,20 @@ div.hidden {
 
 div.finished {
   opacity:1;
-  border:3px lightgreen solid;
+  transition: border-radius 1s ease-out;
+  animation:reshape 1s ease-in-out 0s forwards;
+  overflow: hidden;
+  z-index: 5;
+}
+
+@keyframes reshape {
+  0% {border-radius:10%;}
+  100% {border-radius:40%;}
+}
+
+@keyframes fade-in {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
 
 
