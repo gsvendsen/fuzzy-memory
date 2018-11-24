@@ -39,22 +39,23 @@ body {
 }
 
 .memory-card {
-  width:100px;
+  width:105px;
   height:100px;
   background-size:cover;
   opacity:1;
   transition:1s;
-  box-sizing: border-box;
   border-radius: 10%;
 }
 
 .memory-card-container {
-  margin:0 5px 0 5px;
+  margin:5px;
+  height:100px;
+  width:100px;
+  overflow: hidden;
   background-color:black;
   position: relative;
   border-radius: 10%;
-  opacity:0;
-  animation:fade-in 1s 5s forwards;
+  opacity:1;
 }
 
 .play-btn {
@@ -83,6 +84,7 @@ body {
   width:540px;
   height:540px;
   border-radius: 10%;
+  overflow: hidden;
 }
 
 .restart-btn {
@@ -111,6 +113,7 @@ div.finished {
   animation:reshape 1s ease-in-out 0s forwards;
   overflow: hidden;
   z-index: 5;
+  width:100px;
 }
 
 .no-bg {
@@ -119,6 +122,10 @@ div.finished {
 
 .finish-border {
   animation: pulse 1.5s ease-in-out alternate;
+}
+
+.spin {
+  animation: spin 1s ease-in-out;
 }
 
 @keyframes pulse {
@@ -141,8 +148,18 @@ div.finished {
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(1turn);
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    border-radius:50%;
+  }
+
+  100 {
+    transform:rotate(1turn);
+    border-radius:10%;
+
   }
 }
 
