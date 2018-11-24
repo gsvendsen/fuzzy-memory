@@ -9,19 +9,28 @@ body {
   align-items:center;
   padding: 50px 0 50px 0;
   box-sizing:border-box;
+  background-color: #423763;
+  background-image: linear-gradient(to top right, #423763, #6E6792);
+  background-size: cover;
+  height:100vh;
 }
 
 .memory-board {
-  background-color: lightyellow;
+  background-color: #D61E7A;
+  background-image: linear-gradient(to top right, #D61E7A, #FD547B);
+  border-radius: 10%;
   margin:0;
-  padding:0;
-  width:540px;
-
+  padding:30px;
   display:flex;
+  opacity:1;
   flex-wrap:wrap;
   justify-content: space-around;
   align-items: center;
+  border-radius:50%;
+  width:540px;
   height:540px;
+  border-radius: 10%;
+  transition: 4s;
 }
 
 .memory-card {
@@ -45,37 +54,38 @@ div.hidden {
 
 div.finished {
   opacity:1;
+  border:3px lightgreen solid;
 }
 
 
 [data-card-type="heart"] {
-  background-image:url('http://pngimg.com/uploads/heart/heart_PNG51324.png');
+  background-image: linear-gradient(to top right, #04C0A9, #06DEC4);
 }
 
 [data-card-type="test"] {
-  background-image:url('http://www.stickpng.com/assets/images/5a4613eed099a2ad03f9c996.png');
+  background-image: linear-gradient(to top right, #1C2A30, #24353C);
 }
 
 [data-card-type="dog"] {
-  background-image:url('https://dumielauxepices.net/sites/default/files/dog-clipart-transparent-background-505594-8388364.png');
+  background-image: linear-gradient(to top right, #58043E, #84024A);
 }
 
 [data-card-type="cat"] {
-  background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18myNuamD0GqdIGAqfL_vqCPME8aIcDpp28Qjdjk-D8xIzXzV');
+  background-image: linear-gradient(to top right, #FDAB87, #FECA8A);
 }
 
 [data-card-type="dollar"] {
-  background-image:url('http://pluspng.com/img-png/dollar-png-dollar-png-image-1824.png');
+  background-image: linear-gradient(to top right, #FFFFFF, #0FFEE1);
 }
 
 [data-card-type="horse"] {
-  background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ33yiQvXBdNbv1VnVymaDY1KV7Z9hszm8EnWo05sbHLd90ayW0');
+  background-image: linear-gradient(to top right, #07C17A, #02F392);
 }
 
 [data-card-type="apple"] {
-  background-image:url('https://ecdn.teacherspayteachers.com/thumbitem/Apple-PNG-3689800-1520268696/original-3689800-1.jpg');
+  background-image: linear-gradient(to top right, #490045, #F23D49);
 }
 
 [data-card-type="skull"] {
-  background-image:url('https://pre00.deviantart.net/86f1/th/pre/i/2013/332/b/6/spooky_skeleton_03_png_stock_by_jumpfer_stock-d6vz7i7.png');
+  background-image: linear-gradient(to top right, #FFFF, #0000);
 }
