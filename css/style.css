@@ -13,7 +13,9 @@ body {
   background-image: linear-gradient(to top right, #423763, #6E6792);
   background-size: cover;
   height:100vh;
+  overflow:hidden;
 }
+
 
 .memory-board {
   background-color: #D61E7A;
@@ -21,16 +23,19 @@ body {
   border-radius: 10%;
   margin:0;
   padding:30px;
+  width:100px;
   display:flex;
   opacity:1;
   flex-wrap:wrap;
   justify-content: space-around;
   align-items: center;
+  height:100px;
   border-radius:50%;
-  width:540px;
-  height:540px;
-  border-radius: 10%;
   transition: 4s;
+}
+
+.no-play {
+  opacity:0;
 }
 
 .memory-card {
@@ -52,6 +57,50 @@ body {
   animation:fade-in 1s 5s forwards;
 }
 
+.play-btn {
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  cursor:pointer;
+  background-color:black;
+  position:absolute;
+  align-self: center;
+  transition:1s;
+}
+
+.play-btn:hover {
+  width:100px;
+  height:100px;
+  border-radius:80%;
+}
+
+.active {
+  bottom:20px;
+  left:20px;
+}
+
+.started {
+  width:540px;
+  height:540px;
+  border-radius: 10%;
+}
+
+.restart-btn {
+  cursor:pointer;
+  padding:10px;
+  height:30px;
+  width:30px;
+  background-color:black;
+  position:absolute;
+  bottom:30px;
+  border-radius:10%;
+}
+
+.restart-btn {
+  color:white;
+  font-family:sans-serif;
+}
+
 div.hidden {
   opacity:0;
 }
@@ -64,9 +113,19 @@ div.finished {
   z-index: 5;
 }
 
+.no-bg {
+  background:none;
+}
+
 @keyframes reshape {
   0% {border-radius:10%;}
   100% {border-radius:40%;}
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 @keyframes fade-in {
