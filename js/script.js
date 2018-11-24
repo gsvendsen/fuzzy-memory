@@ -114,6 +114,11 @@ memoryCards.forEach((memoryCard) => {
             bellSound.stop();
           }
 
+          memoryBoard.classList.add('finish-border');
+          setTimeout(()=>{
+            memoryBoard.classList.remove('finish-border');
+          }, 1500)
+
           bellSound.play();
           bellSound.volume = 0.05;
           card1.classList.add('finished');
@@ -170,7 +175,7 @@ const restart = () => {
 }
 
 // Audio logic
-const audio = document.querySelector('#audio');
+const audio = document.querySelector('.audio');
 const restartButton = document.querySelector('.restart-btn');
 
 

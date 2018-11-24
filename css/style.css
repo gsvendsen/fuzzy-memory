@@ -117,6 +117,24 @@ div.finished {
   background:none;
 }
 
+.finish-border {
+  animation: pulse 1.5s ease-in-out alternate;
+}
+
+@keyframes pulse {
+  0% {
+    border:1px solid rgba(66,142,51,1);
+  }
+
+  70% {
+    border:20px solid rgba(110,50,71,1);
+  }
+
+  100% {
+    border:1px solid rgba(66,142,51,1);
+  }
+}
+
 @keyframes reshape {
   0% {border-radius:10%;}
   100% {border-radius:40%;}
