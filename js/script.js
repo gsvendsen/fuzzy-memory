@@ -159,13 +159,16 @@ const restart = () => {
     card.children[0].classList.remove('finished');
     card.children[0].classList.remove('selected');
     card.children[0].classList.add('hidden');
+    card.classList.add("spin");
     card.classList.remove('no-bg');
+
 
     finishedPairs = 0;
 
     setTimeout(function(){
       let randomCardType = randomProperty(newTypes);
       card.children[0].dataset.cardType = randomCardType;
+      card.classList.remove("spin");
       isRestarting = false;
     }, 1000);
   })
