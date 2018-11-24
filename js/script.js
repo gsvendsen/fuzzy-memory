@@ -134,9 +134,6 @@ memoryCards.forEach((memoryCard) => {
 
           // If all cards are finished
           if(finishedPairs == 8){
-            finishSound.play();
-            finishSound.volume = 0.1;
-
             setTimeout(restart, 2500);
           }
 
