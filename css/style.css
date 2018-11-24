@@ -36,10 +36,11 @@ body {
 .memory-card {
   width:100px;
   height:100px;
-  background-color: black;
   background-size:cover;
   opacity:1;
   transition:1s;
+  box-sizing: border-box;
+  border-radius: 10%;
 }
 
 .memory-card-container {
