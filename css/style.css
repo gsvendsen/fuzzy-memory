@@ -95,6 +95,7 @@ body {
   background-color:black;
   position:absolute;
   bottom:30px;
+  transition:opacity 3s ease-in-out;
   border-radius:10%;
 }
 
@@ -104,6 +105,10 @@ body {
 }
 
 div.hidden {
+  opacity:0;
+}
+
+svg.hidden {
   opacity:0;
 }
 
@@ -242,5 +247,15 @@ svg rect {
   to {
     stroke-dashoffset: -4190;
     stroke-dasharray: 2090;
+  }
+}
+
+@keyframes start {
+  from {
+    position: absolute;
+  }
+
+  to{
+    position:relative;
   }
 }
