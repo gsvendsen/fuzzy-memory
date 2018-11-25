@@ -149,6 +149,8 @@ memoryCards.forEach((memoryCard) => {
 // Restarts the entire board
 const restart = () => {
 
+  countDown();
+
   isRestarting = true;
 
   selectedAmount = 0;
@@ -178,8 +180,39 @@ const restart = () => {
 const audio = document.querySelector('.audio');
 const restartButton = document.querySelector('.restart-btn');
 
+const countBorder = document.querySelector('.count-border');
+const rect = document.querySelector('rect');
 
-// Reshuffles the board if shuffle is clicked
-restartButton.addEventListener('click', ()=>{
-  restart();
-})
+var timer;
+let countingDown = false;
+
+const countDown = () => {
+
+  clearTimeout(timer)
+
+  if(rect.classList.contains("count-down")){
+    rect.classList.remove("count-down");
+  }
+
+  setTimeout(function(){
+    rect.classList.add("count-down")
+  },500);
+
+  timer = setTimeout(restart, 36000);
+
+}
+
+const timerRestart = () => {
+  var timer = setTimeout(function(){
+    restart();
+  }, 36000);
+}
+
+const stop = () => {
+  clearTimeout(timer);
+}
+
+
+playButton.addEventListener('click', countDown);
+
+restartButton.addEventListener('click', restart);
