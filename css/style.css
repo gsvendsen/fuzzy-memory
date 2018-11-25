@@ -200,3 +200,47 @@ div.finished {
 [data-card-type="eight"] {
   background-image: linear-gradient(to top right, #FFFF, #0000);
 }
+
+#countdown {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  text-align: center;
+  z-index:-1;
+}
+
+#countdown > svg {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg rect {
+  stroke-dasharray: 2100;
+  stroke-dashoffset: -2100;
+  stroke-width:2px;
+  stroke:white;
+  stroke-linecap: round;
+  height:100%;
+  width: 100%;
+  fill: none;
+}
+
+.count-down {
+  animation: countdown 35s linear forwards 1s;
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: -2100;
+    stroke-dasharray: 2100;
+  }
+  to {
+    stroke-dashoffset: -4190;
+    stroke-dasharray: 2090;
+  }
+}
