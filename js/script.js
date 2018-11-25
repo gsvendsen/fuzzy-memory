@@ -63,6 +63,7 @@ playButton.addEventListener('click', ()=>{
   playButton.classList.add('active');
   memoryBoard.classList.remove('no-play');
   memoryBoard.classList.add('started');
+  restartButton.classList.remove('hidden');
 });
 
 startBoard();
@@ -183,6 +184,8 @@ const restartButton = document.querySelector('.restart-btn');
 const countBorder = document.querySelector('.count-border');
 const rect = document.querySelector('rect');
 
+
+var firstClick = true;
 var timer;
 let countingDown = false;
 
@@ -194,24 +197,22 @@ const countDown = () => {
     rect.classList.remove("count-down");
   }
 
-  setTimeout(function(){
-    rect.classList.add("count-down")
-  },500);
+  if(firstClick){
+    setTimeout(function(){
+      rect.classList.add("count-down")
+    },3000);
+
+    firstClick = false;
+  } else {
+    setTimeout(function(){
+      rect.classList.add("count-down")
+    },500);
+  }
+
 
   timer = setTimeout(restart, 36000);
 
 }
-
-const timerRestart = () => {
-  var timer = setTimeout(function(){
-    restart();
-  }, 36000);
-}
-
-const stop = () => {
-  clearTimeout(timer);
-}
-
 
 playButton.addEventListener('click', countDown);
 
