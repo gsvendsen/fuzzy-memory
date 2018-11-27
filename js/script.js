@@ -7,6 +7,8 @@ var finishedPairs = 0;
 
 let isRestarting = false;
 
+var duration = 35;
+
 // Template object of memory board map
 const cardTypes = {
   'one': 0,
@@ -83,6 +85,18 @@ const resetCards = ()=>{
   selectedAmount = 0;
 }
 
+const completeGame = ()=>{
+  memoryBoard.classList.add('completed');
+  countBorder.classList.remove('count-down');
+  countBorder.style.opacity = "0";
+
+  setTimeout(function() {
+    memoryBoard.classList.remove('completed');
+    countBorder.style.opacity = "1";
+    restart();
+  }, 6000);
+}
+
 // Eventlistener for all memory cards when clicked
 memoryCards.forEach((memoryCard) => {
   memoryCard.addEventListener('click', ()=>{
@@ -135,7 +149,7 @@ memoryCards.forEach((memoryCard) => {
 
           // If all cards are finished
           if(finishedPairs == 8){
-            setTimeout(restart, 2500);
+            setTimeout(completeGame, 500);
           }
 
           // If cards did not match
@@ -150,31 +164,33 @@ memoryCards.forEach((memoryCard) => {
 // Restarts the entire board
 const restart = () => {
 
-  countDown();
+  if(!isRestarting){
+    countDown();
 
-  isRestarting = true;
+    isRestarting = true;
 
-  selectedAmount = 0;
+    selectedAmount = 0;
 
-  newTypes = JSON.parse(JSON.stringify(cardTypes));
+    newTypes = JSON.parse(JSON.stringify(cardTypes));
 
-  memoryCards.forEach((card)=>{
-    card.children[0].classList.remove('finished');
-    card.children[0].classList.remove('selected');
-    card.children[0].classList.add('hidden');
-    card.classList.add("spin");
-    card.classList.remove('no-bg');
+    memoryCards.forEach((card)=>{
+      card.children[0].classList.remove('finished');
+      card.children[0].classList.remove('selected');
+      card.children[0].classList.add('hidden');
+      card.classList.add("spin");
+      card.classList.remove('no-bg');
 
 
-    finishedPairs = 0;
+      finishedPairs = 0;
 
-    setTimeout(function(){
-      let randomCardType = randomProperty(newTypes);
-      card.children[0].dataset.cardType = randomCardType;
-      card.classList.remove("spin");
-      isRestarting = false;
-    }, 1000);
-  })
+      setTimeout(function(){
+        let randomCardType = randomProperty(newTypes);
+        card.children[0].dataset.cardType = randomCardType;
+        card.classList.remove("spin");
+        isRestarting = false;
+      }, 1000);
+    })
+  }
 }
 
 // Audio logic
@@ -191,26 +207,50 @@ let countingDown = false;
 
 const countDown = () => {
 
-  clearTimeout(timer)
+  if(memoryBoard.classList.contains("completed")){
 
-  if(rect.classList.contains("count-down")){
-    rect.classList.remove("count-down");
-  }
-
-  if(firstClick){
-    setTimeout(function(){
-      rect.classList.add("count-down")
-    },3000);
-
-    firstClick = false;
   } else {
-    setTimeout(function(){
-      rect.classList.add("count-down")
-    },500);
+
+    clearTimeout(timer)
+
+    if(rect.classList.contains("count-down")){
+      rect.classList.toggle("count-down");
+    }
+
+    if(firstClick){
+      setTimeout(function(){
+        rect.classList.add("count-down")
+        rect.style.animationDuration = duration+'s';
+      },3000);
+
+      timer = setTimeout(function(){
+        restart();
+        memoryBoard.classList.add('fail-border');
+        setTimeout(()=>{
+          memoryBoard.classList.remove('fail-border');
+        }, 1500)
+      }, duration*1000 + 3000);
+
+      firstClick = false;
+    } else {
+      setTimeout(function(){
+        rect.classList.add("count-down")
+        rect.style.animationDuration = duration+'s';
+      },100);
+
+      timer = setTimeout(function(){
+        restart();
+        memoryBoard.classList.add('fail-border');
+        setTimeout(()=>{
+          memoryBoard.classList.remove('fail-border');
+        }, 1500)
+      }, duration*1000);
+    }
+
   }
 
 
-  timer = setTimeout(restart, 36000);
+
 
 }
 
