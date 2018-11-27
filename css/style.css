@@ -9,8 +9,7 @@ body {
   align-items:center;
   padding: 50px 0 50px 0;
   box-sizing:border-box;
-  background-color: #423763;
-  background-image: linear-gradient(to top right, #423763, #6E6792);
+  background-color: #1A1423;
   background-size: cover;
   height:100vh;
   overflow:hidden;
@@ -18,8 +17,7 @@ body {
 
 
 .memory-board {
-  background-color: #D61E7A;
-  background-image: linear-gradient(to top right, #D61E7A, #FD547B);
+  background-color: #EACDC2;
   border-radius: 10%;
   margin:0;
   padding:30px;
@@ -52,7 +50,7 @@ body {
   height:100px;
   width:100px;
   overflow: hidden;
-  background-color:black;
+  background-color:#222e;
   position: relative;
   border-radius: 10%;
   opacity:1;
@@ -63,7 +61,7 @@ body {
   height:50px;
   border-radius:50%;
   cursor:pointer;
-  background-color:black;
+  background-color:#EACDC2;
   position:absolute;
   align-self: center;
   transition:1s;
@@ -92,7 +90,7 @@ body {
   padding:10px;
   height:30px;
   width:30px;
-  background-color:black;
+  background-color:#EACDC2;
   position:absolute;
   bottom:30px;
   transition:opacity 3s ease-in-out;
@@ -129,6 +127,10 @@ div.finished {
   animation: pulse 1.5s ease-in-out alternate;
 }
 
+.fail-border {
+  animation: bad-pulse 1.5s ease-in-out alternate;
+}
+
 .spin {
   animation: spin 1s ease-in-out;
 }
@@ -144,6 +146,20 @@ div.finished {
 
   100% {
     border:1px solid rgba(66,142,51,1);
+  }
+}
+
+@keyframes bad-pulse {
+  0% {
+    border:1px solid red;
+  }
+
+  70% {
+    border:20px solid rgba(110,50,71,1);
+  }
+
+  100% {
+    border:1px solid red;
   }
 }
 
@@ -179,7 +195,7 @@ div.finished {
 }
 
 [data-card-type="two"] {
-  background-image: linear-gradient(to top right, #1C2A30, #24353C);
+  background-image: linear-gradient(to top right, #F93901, #F9CC21);
 }
 
 [data-card-type="three"] {
@@ -232,11 +248,34 @@ svg rect {
   stroke-linecap: round;
   height:100%;
   width: 100%;
+  transition:1s;
   fill: none;
 }
 
 .count-down {
-  animation: countdown 35s linear forwards 1s;
+  animation: countdown linear forwards;
+}
+
+.completed > .memory-card-container {
+  opacity:0;
+}
+
+.completed {
+  animation: completed 3s ease-in-out infinite alternate;
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes countdown {
@@ -257,5 +296,25 @@ svg rect {
 
   to{
     position:relative;
+  }
+}
+
+@keyframes completed {
+  0% {
+    border-radius:10%;
+    background-color: #FD547B;
+    background-image:none;
+  }
+
+  50% {
+    border-radius:40%;
+  }
+
+  100% {
+    border-radius:50%;
+    width:200px;
+    height:200px;
+    background-image:none;
+    background-color:#93EDC7);
   }
 }
