@@ -7,7 +7,7 @@ var finishedPairs = 0;
 
 let isRestarting = false;
 
-var duration = 35;
+var duration = 40;
 
 // Template object of memory board map
 const cardTypes = {
@@ -62,7 +62,8 @@ playButton.addEventListener('click', ()=>{
     audio.volume = 0.7;
   }
 
-  playButton.classList.add('active');
+  playButton.classList.add('theme-btn');
+  playButton.classList.remove('play-btn');
   memoryBoard.classList.remove('no-play');
   memoryBoard.classList.add('started');
   restartButton.classList.remove('hidden');
@@ -85,6 +86,7 @@ const resetCards = ()=>{
   selectedAmount = 0;
 }
 
+// Functinos
 const completeGame = ()=>{
   memoryBoard.classList.add('completed');
   countBorder.classList.remove('count-down');
@@ -246,12 +248,30 @@ const countDown = () => {
         }, 1500)
       }, duration*1000);
     }
-
   }
+}
 
+const themes = {
+  crimson : {
+    main: "red",
+    accent: "blue"
+  },
 
+  moody : {
+    main: "#222e",
+    accent: "white"
+  },
 
+  default : {
+    main: "#1A1423",
+    accent: "#EACDC2"
+  }
+}
 
+const changeTheme = (theme) => {
+  var selectedTheme = themes[theme];
+  document.body.style.backgroundColor = selectedTheme.main;
+  memoryBoard.style.backgroundColor = selectedTheme.accent;
 }
 
 playButton.addEventListener('click', countDown);
