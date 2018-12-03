@@ -3,12 +3,12 @@ const bellSound = document.querySelector('.bell');
 const finishSound = document.querySelector('.finish');
 const restartSound = document.querySelector('.restart');
 
-var cardCount = 15;
-var finishedPairs = 0;
+let cardCount = 15;
+let finishedPairs = 0;
 
 let isRestarting = false;
 
-var duration = 45;
+let duration = 45;
 
 // Template object of memory board map
 const cardTypes = {
@@ -27,8 +27,8 @@ let newTypes = JSON.parse(JSON.stringify(cardTypes));
 
 // Fetches random item in memory map that isnt picked twice already
 const randomProperty =  (obj)=> {
-  var keys = Object.keys(obj)
-  var randomKey = keys[Math.floor(Math.random() * (keys.length) ) + 0];
+  let keys = Object.keys(obj)
+  let randomKey = keys[Math.floor(Math.random() * (keys.length) ) + 0];
   if(obj[randomKey] == 2){
     return randomProperty(obj);
   } else {
@@ -58,6 +58,8 @@ const startBoard = () => {
 
 const themeButton = document.querySelector('.theme-btn');
 const playButton = document.querySelector('.play-btn');
+const diffButton = document.querySelector('.difficulty-btn')
+
 playButton.addEventListener('click', ()=>{
   if(audio.paused) {
     audio.play();
@@ -66,6 +68,7 @@ playButton.addEventListener('click', ()=>{
 
   playButton.classList.add('removed');
   themeButton.classList.remove('no-play');
+  diffButton.classList.remove('no-play');
   memoryBoard.classList.remove('no-play');
   memoryBoard.classList.add('started');
   restartButton.classList.remove('hidden');
@@ -214,8 +217,8 @@ const countBorder = document.querySelector('.count-border');
 const rect = document.querySelector('rect');
 
 
-var firstClick = true;
-var timer;
+let firstClick = true;
+let timer;
 let countingDown = false;
 
 // Countdown Logic
@@ -296,14 +299,14 @@ const themes = {
 }
 
 const countRect = document.querySelector('.border');
-var amountOfThemes = Object.keys(themes).length;
+let amountOfThemes = Object.keys(themes).length;
 
 for(let i = 0; i < amountOfThemes; i++){
-  var key = Object.keys(themes)[i];
-  var mainColor = themes[key].main;
-  var secondColor = themes[key].accent;
+  let key = Object.keys(themes)[i];
+  let mainColor = themes[key].main;
+  let secondColor = themes[key].accent;
 
-  var newThemeDiv = document.createElement('div');
+  let newThemeDiv = document.createElement('div');
 
   newThemeDiv.classList.add('theme-selection');
 
@@ -316,7 +319,7 @@ for(let i = 0; i < amountOfThemes; i++){
 }
 
 const changeTheme = (theme) => {
-  var selectedTheme = themes[theme];
+  let selectedTheme = themes[theme];
   let root = document.documentElement;
   root.style.setProperty('--main-color', selectedTheme.main);
   root.style.setProperty('--accent-color', selectedTheme.accent);
@@ -327,7 +330,7 @@ let themeButtons = document.querySelectorAll('.theme-selection');
 
 themeButtons.forEach((button) => {
   button.addEventListener('click', () =>{
-    var buttonTheme = button.dataset.theme;
+    let buttonTheme = button.dataset.theme;
     changeTheme(buttonTheme);
     if(themeButtons[0] !== button){
       themeButton.removeChild(button);
