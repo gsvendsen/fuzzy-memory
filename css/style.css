@@ -1,14 +1,8 @@
+/* ALL STYLING USED FOR FUZZY MEMORY */
 * {
   margin: 0;
   padding: 0;
 }
-
-
-:root {
-  --main-color: #1A1423;
-  --accent-color: #EACDC2;
-}
-
 
 body {
   display:flex;
@@ -21,6 +15,12 @@ body {
   height:100vh;
   overflow:hidden;
   transition:1s;
+}
+
+/* ROOT VARIABLES FOR THEME COLORS */
+:root {
+  --main-color: #1A1423;
+  --accent-color: #EACDC2;
 }
 
 .memory-board {
@@ -214,6 +214,88 @@ div.finished {
   animation: spin 1s ease-in-out;
 }
 
+.countdown {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  text-align: center;
+  z-index:-1;
+}
+
+.countdown > svg {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg rect {
+  stroke-dasharray: 2100;
+  stroke-dashoffset: -2100;
+  stroke-width:4px;
+  stroke: var(--accent-color);
+  stroke-linecap: round;
+  height:100%;
+  width: 100%;
+  transition:1s;
+  fill: none;
+}
+
+.count-down {
+  animation: countdown linear forwards;
+}
+
+.completed > .memory-card-container {
+  opacity:0;
+}
+
+.completed {
+  animation: completed 3s ease-in-out infinite alternate;
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+/* DATA SET STYLING */
+
+[data-card-type="one"] {
+  background-image: linear-gradient(to top right, #04C0A9, #06DEC4);
+}
+
+[data-card-type="two"] {
+  background-image: linear-gradient(to top right, #F93901, #F9CC21);
+}
+
+[data-card-type="three"] {
+  background-image: linear-gradient(to top right, #58043E, #84024A);
+}
+
+[data-card-type="four"] {
+  background-image: linear-gradient(to top right, #FDAB87, #FECA8A);
+}
+
+[data-card-type="five"] {
+  background-image: linear-gradient(to top right, #FFFFFF, #0FFEE1);
+}
+
+[data-card-type="six"] {
+  background-image: linear-gradient(to top right, #07C17A, #02F392);
+}
+
+[data-card-type="seven"] {
+  background-image: linear-gradient(to top right, #490045, #F23D49);
+}
+
+[data-card-type="eight"] {
+  background-image: linear-gradient(to top right, #FFFF, #0000);
+}
+
+/* ANIMATIONS */
+
 @keyframes pulse {
   0% {
     border:1px solid rgba(66,142,51,1);
@@ -261,90 +343,6 @@ div.finished {
     border-radius:10%;
 
   }
-}
-
-@keyframes fade-in {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-
-[data-card-type="one"] {
-  background-image: linear-gradient(to top right, #04C0A9, #06DEC4);
-}
-
-[data-card-type="two"] {
-  background-image: linear-gradient(to top right, #F93901, #F9CC21);
-}
-
-[data-card-type="three"] {
-  background-image: linear-gradient(to top right, #58043E, #84024A);
-}
-
-[data-card-type="four"] {
-  background-image: linear-gradient(to top right, #FDAB87, #FECA8A);
-}
-
-[data-card-type="five"] {
-  background-image: linear-gradient(to top right, #FFFFFF, #0FFEE1);
-}
-
-[data-card-type="six"] {
-  background-image: linear-gradient(to top right, #07C17A, #02F392);
-}
-
-[data-card-type="seven"] {
-  background-image: linear-gradient(to top right, #490045, #F23D49);
-}
-
-[data-card-type="eight"] {
-  background-image: linear-gradient(to top right, #FFFF, #0000);
-}
-
-.countdown {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  display:flex;
-  justify-content:center;
-  align-items: center;
-  text-align: center;
-  z-index:-1;
-}
-
-.countdown > svg {
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  transform: rotateY(-180deg) rotateZ(-90deg);
-}
-
-svg rect {
-  stroke-dasharray: 2100;
-  stroke-dashoffset: -2100;
-  stroke-width:4px;
-  stroke: var(--accent-color);
-  stroke-linecap: round;
-  height:100%;
-  width: 100%;
-  transition:1s;
-  fill: none;
-}
-
-.count-down {
-  animation: countdown linear forwards;
-}
-
-.completed > .memory-card-container {
-  opacity:0;
-}
-
-.completed {
-  animation: completed 3s ease-in-out infinite alternate;
-}
-
-.fade-in {
-  animation: fade-in 0.5s ease-in-out;
 }
 
 @keyframes fade-in {
@@ -439,7 +437,7 @@ svg rect {
   padding:5px;
 }
 
-
+/* ANIMATIONS FOR MOBILE */
 @keyframes countdown {
   from {
     stroke-dashoffset: -2100;
