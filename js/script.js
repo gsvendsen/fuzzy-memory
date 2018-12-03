@@ -253,29 +253,30 @@ const countDown = () => {
 }
 
 const themes = {
-  crimson : {
-    main: "red",
-    accent: "blue"
-  },
-
-  moody : {
-    main: "#222e",
-    accent: "white"
-  },
 
   default : {
     main: "#1A1423",
     accent: "#EACDC2"
   },
 
-  banana : {
-    main:"yellow",
-    accent:"black"
+  retro : {
+    main: "#212027",
+    accent: "#F22F08"
   },
 
-  gustav : {
-    main:"pink",
-    accent:"brown",
+  mediterranean : {
+    main:"#583E2E",
+    accent:"#F1E0D6"
+  },
+
+  calm : {
+    main:"#132226",
+    accent:"#BE9063",
+  },
+
+  sunset : {
+    main:"#A3586D",
+    accent:"#5C4A72",
   }
 }
 
@@ -306,14 +307,20 @@ const changeTheme = (theme) => {
   restartButton.style.backgroundColor = selectedTheme.accent;
   countRect.style.stroke = selectedTheme.accent;
   playButton.style.backgroundColor = selectedTheme.accent;
+  themeButton.style.backgroundColor = selectedTheme.accent;
 }
 
-const themeButtons = document.querySelectorAll('.theme-selection');
+let themeButtons = document.querySelectorAll('.theme-selection');
 
 themeButtons.forEach((button) => {
   button.addEventListener('click', () =>{
     var buttonTheme = button.dataset.theme;
     changeTheme(buttonTheme);
+    if(themeButtons[0] !== button){
+      themeButton.removeChild(button);
+      themeButton.insertBefore(button, themeButtons[0])
+      themeButtons = document.querySelectorAll('.theme-selection');
+    }
   })
 })
 
