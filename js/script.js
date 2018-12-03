@@ -368,12 +368,13 @@ for(let i = 0; i < amountOfThemes; i++){
   themeButton.appendChild(newThemeDiv);
 }
 
+
 const changeTheme = (theme) => {
   let selectedTheme = themes[theme];
   let root = document.documentElement;
   root.style.setProperty('--main-color', selectedTheme.main);
   root.style.setProperty('--accent-color', selectedTheme.accent);
-
+  localStorage.setItem("theme", theme);
 }
 
 let themeButtons = document.querySelectorAll('.theme-selection');
@@ -389,6 +390,10 @@ themeButtons.forEach((button) => {
     }
   })
 })
+
+if(localStorage.getItem("theme")){
+  changeTheme(localStorage.getItem("theme"));
+}
 
 playButton.addEventListener('click', countDown);
 
