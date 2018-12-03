@@ -8,7 +8,7 @@ let finishedPairs = 0;
 
 let isRestarting = false;
 
-let duration = 45;
+let duration = 50;
 
 // Template object of memory board map
 const cardTypes = {
@@ -59,6 +59,56 @@ const startBoard = () => {
 const themeButton = document.querySelector('.theme-btn');
 const playButton = document.querySelector('.play-btn');
 const diffButton = document.querySelector('.difficulty-btn')
+const timerIcon = document.querySelector('.timer');
+
+const difficultiesKeys = ["easy", "medium", "hard"];
+
+const difficulties = {
+  "easy": {
+    size: 65,
+    duration: 60,
+    color:"green",
+  },
+  "medium": {
+    size: 85,
+    duration: 50,
+    color:"orange",
+
+  },
+  "hard": {
+    size: 100,
+    duration: 30,
+    color:"red",
+  },
+}
+
+let selectedDifficulty = 0;
+
+diffButton.addEventListener("click", ()=>{
+  if(!isRestarting){
+    selectedDifficulty++;
+    console.log(selectedDifficulty);
+    if(selectedDifficulty>difficultiesKeys.length-1){
+      selectedDifficulty = 0;
+    }
+
+    difficulty = difficultiesKeys[selectedDifficulty]
+    difficulty = difficulties[difficulty];
+
+    console.log(difficulty)
+    duration = difficulty.duration;
+
+    timerIcon.style.width = difficulty.size+"%";
+    timerIcon.style.height = difficulty.size+"%";
+    timerIcon.style.fill = difficulty.color;
+
+    setTimeout(()=> {
+      timerIcon.style.fill = getComputedStyle(document.body).getPropertyValue('--main-color');
+    }, 1000)
+
+    restart();
+  }
+})
 
 playButton.addEventListener('click', ()=>{
   if(audio.paused) {
