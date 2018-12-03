@@ -31,6 +31,7 @@ body {
   height:100px;
   border-radius:50%;
   transition: 4s;
+  transition: background-color 1s, width 4s, height 4s, opacity 4s;
 }
 
 .no-play {
@@ -77,13 +78,30 @@ body {
 .theme-btn {
   bottom:20px;
   left:20px;
-  width:50px;
-  height:50px;
-  border-radius:50%;
+  width:100px;
+  border-radius:10px;
   background-color:#EACDC2;
   position:absolute;
   align-self: center;
   transition:1s;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction: column;
+  padding:20px 0 20px 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-selection {
+  height:65px;
+  width:65px;
+  border-radius: 50%;
+  margin: 10px 0 10px 0;
+  border:5px solid;
+}
+
+.removed {
+  display:none;
 }
 
 .started {
