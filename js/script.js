@@ -22,6 +22,36 @@ const cardTypes = {
   'eight': 0,
 }
 
+// Object containing all current themes
+const themes = {
+
+  default : {
+    main: "#1A1423",
+    accent: "#EACDC2"
+  },
+
+  retro : {
+    main: "#212027",
+    accent: "#F22F08"
+  },
+
+  mediterranean : {
+    main:"#10000C",
+    accent:"#EFA747"
+  },
+
+  calm : {
+    main:"#132226",
+    accent:"#BE9063",
+  },
+
+  aqua : {
+    main:"#02231C",
+    accent:"#107050",
+  },
+}
+
+
 // Default new object copied from the template
 let newTypes = JSON.parse(JSON.stringify(cardTypes));
 
@@ -61,8 +91,8 @@ const playButton = document.querySelector('.play-btn');
 const diffButton = document.querySelector('.difficulty-btn')
 const timerIcon = document.querySelector('.timer');
 
+// All difficulties and their data
 const difficultiesKeys = ["easy", "medium", "hard"];
-
 const difficulties = {
   "easy": {
     size: 65,
@@ -84,6 +114,7 @@ const difficulties = {
 
 let selectedDifficulty = 0;
 
+// Changes difficulty to next one on click
 diffButton.addEventListener("click", ()=>{
   if(!isRestarting){
     selectedDifficulty++;
@@ -110,6 +141,7 @@ diffButton.addEventListener("click", ()=>{
   }
 })
 
+// Start sequence class changes when play button is clicked
 playButton.addEventListener('click', ()=>{
   if(audio.paused) {
     audio.play();
@@ -124,6 +156,7 @@ playButton.addEventListener('click', ()=>{
   restartButton.classList.remove('hidden');
 });
 
+//Starts new board on default
 startBoard();
 
 
@@ -141,7 +174,7 @@ const resetCards = ()=>{
   selectedAmount = 0;
 }
 
-// Functinos
+// Function for game completion
 const completeGame = ()=>{
   memoryBoard.classList.add('completed');
   countBorder.classList.remove('count-down');
@@ -229,6 +262,7 @@ memoryCards.forEach((memoryCard) => {
 // Restarts the entire board
 const restart = () => {
 
+  // Checks if board is already restarting
   if(!isRestarting){
     countDown();
 
@@ -238,6 +272,7 @@ const restart = () => {
 
     newTypes = JSON.parse(JSON.stringify(cardTypes));
 
+    // Resets all cards and gives them new random properties
     memoryCards.forEach((card)=>{
       card.children[0].classList.remove('finished');
       card.children[0].classList.remove('selected');
@@ -261,8 +296,8 @@ const restart = () => {
 // Audio logic
 const audio = document.querySelector('.audio');
 audio.loop = true;
-const restartButton = document.querySelector('.restart-btn');
 
+const restartButton = document.querySelector('.restart-btn');
 const countBorder = document.querySelector('.count-border');
 const rect = document.querySelector('rect');
 
@@ -320,37 +355,10 @@ const countDown = () => {
   }
 }
 
-const themes = {
-
-  default : {
-    main: "#1A1423",
-    accent: "#EACDC2"
-  },
-
-  retro : {
-    main: "#212027",
-    accent: "#F22F08"
-  },
-
-  mediterranean : {
-    main:"#10000C",
-    accent:"#EFA747"
-  },
-
-  calm : {
-    main:"#132226",
-    accent:"#BE9063",
-  },
-
-  aqua : {
-    main:"#02231C",
-    accent:"#107050",
-  }
-}
-
 const countRect = document.querySelector('.border');
 let amountOfThemes = Object.keys(themes).length;
 
+// Creates theme selection button for each theme in themes
 for(let i = 0; i < amountOfThemes; i++){
   let key = Object.keys(themes)[i];
   let mainColor = themes[key].main;
@@ -359,16 +367,14 @@ for(let i = 0; i < amountOfThemes; i++){
   let newThemeDiv = document.createElement('div');
 
   newThemeDiv.classList.add('theme-selection');
-
   newThemeDiv.style.backgroundColor = mainColor;
   newThemeDiv.style.borderColor = secondColor;
-
   newThemeDiv.dataset.theme = Object.keys(themes)[i];
 
   themeButton.appendChild(newThemeDiv);
 }
 
-
+// Changes theme from theme name argument
 const changeTheme = (theme) => {
   let selectedTheme = themes[theme];
   let root = document.documentElement;
@@ -379,6 +385,7 @@ const changeTheme = (theme) => {
 
 let themeButtons = document.querySelectorAll('.theme-selection');
 
+// Calls on changeTheme when themebutton is pressed and moves it to top of list
 themeButtons.forEach((button) => {
   button.addEventListener('click', () =>{
     let buttonTheme = button.dataset.theme;
@@ -391,6 +398,7 @@ themeButtons.forEach((button) => {
   })
 })
 
+// Updates theme if localStorage theme data exists
 if(localStorage.getItem("theme")){
   changeTheme(localStorage.getItem("theme"));
 }
