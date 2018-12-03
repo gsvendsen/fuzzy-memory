@@ -104,7 +104,7 @@ const completeGame = ()=>{
 memoryCards.forEach((memoryCard) => {
   memoryCard.addEventListener('click', ()=>{
 
-    if(memoryCard.children[0].classList.contains('finished') || isRestarting){
+    if(memoryCard.children[0].classList.contains('finished') || isRestarting || memoryBoard.classList.contains('no-play')){
 
     } else if (selectedAmount == 2 || memoryCard.children[0].classList.contains('selected')) {
 
@@ -208,6 +208,7 @@ var firstClick = true;
 var timer;
 let countingDown = false;
 
+// Countdown Logic
 const countDown = () => {
 
   if(memoryBoard.classList.contains("completed")){
@@ -265,8 +266,8 @@ const themes = {
   },
 
   mediterranean : {
-    main:"#583E2E",
-    accent:"#F1E0D6"
+    main:"#10000C",
+    accent:"#EFA747"
   },
 
   calm : {
@@ -274,9 +275,9 @@ const themes = {
     accent:"#BE9063",
   },
 
-  sunset : {
-    main:"#A3586D",
-    accent:"#5C4A72",
+  aqua : {
+    main:"#02231C",
+    accent:"#107050",
   }
 }
 
@@ -302,12 +303,10 @@ for(let i = 0; i < amountOfThemes; i++){
 
 const changeTheme = (theme) => {
   var selectedTheme = themes[theme];
-  document.body.style.backgroundColor = selectedTheme.main;
-  memoryBoard.style.backgroundColor = selectedTheme.accent;
-  restartButton.style.backgroundColor = selectedTheme.accent;
-  countRect.style.stroke = selectedTheme.accent;
-  playButton.style.backgroundColor = selectedTheme.accent;
-  themeButton.style.backgroundColor = selectedTheme.accent;
+  let root = document.documentElement;
+  root.style.setProperty('--main-color', selectedTheme.main);
+  root.style.setProperty('--accent-color', selectedTheme.accent);
+
 }
 
 let themeButtons = document.querySelectorAll('.theme-selection');

@@ -3,22 +3,28 @@
   padding: 0;
 }
 
+
+:root {
+  --main-color: #1A1423;
+  --accent-color: #EACDC2;
+}
+
+
 body {
   display:flex;
   justify-content: center;
   align-items:center;
   padding: 50px 0 50px 0;
   box-sizing:border-box;
-  background-color: #1A1423;
+  background-color: var(--main-color);
   background-size: cover;
   height:100vh;
   overflow:hidden;
   transition:1s;
 }
 
-
 .memory-board {
-  background-color: #EACDC2;
+  background-color: var(--accent-color);
   border-radius: 10%;
   margin:0;
   padding:30px;
@@ -63,7 +69,7 @@ body {
   height:50px;
   border-radius:50%;
   cursor:pointer;
-  background-color:#EACDC2;
+  background-color: var(--accent-color);
   position:absolute;
   align-self: center;
   transition:1s;
@@ -81,7 +87,7 @@ body {
   width:100px;
   max-height:55px;
   border-radius:10px;
-  background-color:#EACDC2;
+  background-color: var(--accent-color);
   position:absolute;
   align-self: center;
   transition:1s;
@@ -126,7 +132,7 @@ body {
   padding:10px;
   height:30px;
   width:30px;
-  background-color:#EACDC2;
+  background-color: var(--accent-color);
   position:absolute;
   bottom:30px;
   transition:opacity 3s ease-in-out;
@@ -280,7 +286,7 @@ svg rect {
   stroke-dasharray: 2100;
   stroke-dashoffset: -2100;
   stroke-width:4px;
-  stroke:white;
+  stroke: var(--accent-color);
   stroke-linecap: round;
   height:100%;
   width: 100%;
