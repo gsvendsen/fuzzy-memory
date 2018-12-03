@@ -1,6 +1,7 @@
 const memoryBoard = document.querySelector('.memory-board');
 const bellSound = document.querySelector('.bell');
-const finishSound = document.querySelector('.complete');
+const finishSound = document.querySelector('.finish');
+const restartSound = document.querySelector('.restart');
 
 var cardCount = 15;
 var finishedPairs = 0;
@@ -92,11 +93,19 @@ const completeGame = ()=>{
   memoryBoard.classList.add('completed');
   countBorder.classList.remove('count-down');
   countBorder.style.opacity = "0";
+  finishSound.play();
+  finishSound.volume = 0.3;
+  setTimeout(() => {
+    audio.pause();
+    bellSound.play();
+    bellSound.volume = 0.1;
+  }, 1500)
 
   setTimeout(function() {
     memoryBoard.classList.remove('completed');
     countBorder.style.opacity = "1";
     restart();
+    audio.play();
   }, 6000);
 }
 
@@ -198,6 +207,7 @@ const restart = () => {
 
 // Audio logic
 const audio = document.querySelector('.audio');
+audio.loop = true;
 const restartButton = document.querySelector('.restart-btn');
 
 const countBorder = document.querySelector('.count-border');
@@ -229,6 +239,8 @@ const countDown = () => {
 
       timer = setTimeout(function(){
         restart();
+        restartSound.play();
+        restartSound.volume = 0.05;
         memoryBoard.classList.add('fail-border');
         setTimeout(()=>{
           memoryBoard.classList.remove('fail-border');
@@ -244,6 +256,8 @@ const countDown = () => {
 
       timer = setTimeout(function(){
         restart();
+        restartSound.play();
+        restartSound.volume = 0.05;
         memoryBoard.classList.add('fail-border');
         setTimeout(()=>{
           memoryBoard.classList.remove('fail-border');
