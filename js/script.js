@@ -7,7 +7,7 @@ var finishedPairs = 0;
 
 let isRestarting = false;
 
-var duration = 40;
+var duration = 45;
 
 // Template object of memory board map
 const cardTypes = {
@@ -55,6 +55,7 @@ const startBoard = () => {
   }
 }
 
+const themeButton = document.querySelector('.theme-btn');
 const playButton = document.querySelector('.play-btn');
 playButton.addEventListener('click', ()=>{
   if(audio.paused) {
@@ -62,8 +63,8 @@ playButton.addEventListener('click', ()=>{
     audio.volume = 0.7;
   }
 
-  playButton.classList.add('theme-btn');
-  playButton.classList.remove('play-btn');
+  playButton.classList.add('removed');
+  themeButton.classList.remove('no-play');
   memoryBoard.classList.remove('no-play');
   memoryBoard.classList.add('started');
   restartButton.classList.remove('hidden');
@@ -156,7 +157,7 @@ memoryCards.forEach((memoryCard) => {
 
           // If cards did not match
         } else {
-          setTimeout(resetCards, 1000);
+          setTimeout(resetCards, 700);
           }
         }
       }
@@ -265,14 +266,56 @@ const themes = {
   default : {
     main: "#1A1423",
     accent: "#EACDC2"
+  },
+
+  banana : {
+    main:"yellow",
+    accent:"black"
+  },
+
+  gustav : {
+    main:"pink",
+    accent:"brown",
   }
+}
+
+const countRect = document.querySelector('.border');
+var amountOfThemes = Object.keys(themes).length;
+
+for(let i = 0; i < amountOfThemes; i++){
+  var key = Object.keys(themes)[i];
+  var mainColor = themes[key].main;
+  var secondColor = themes[key].accent;
+
+  var newThemeDiv = document.createElement('div');
+
+  newThemeDiv.classList.add('theme-selection');
+
+  newThemeDiv.style.backgroundColor = mainColor;
+  newThemeDiv.style.borderColor = secondColor;
+
+  newThemeDiv.dataset.theme = Object.keys(themes)[i];
+
+  themeButton.appendChild(newThemeDiv);
 }
 
 const changeTheme = (theme) => {
   var selectedTheme = themes[theme];
   document.body.style.backgroundColor = selectedTheme.main;
   memoryBoard.style.backgroundColor = selectedTheme.accent;
+  restartButton.style.backgroundColor = selectedTheme.accent;
+  countRect.style.stroke = selectedTheme.accent;
+  playButton.style.backgroundColor = selectedTheme.accent;
 }
+
+const themeButtons = document.querySelectorAll('.theme-selection');
+
+themeButtons.forEach((button) => {
+  button.addEventListener('click', () =>{
+    var buttonTheme = button.dataset.theme;
+    changeTheme(buttonTheme);
+  })
+})
 
 playButton.addEventListener('click', countDown);
 
