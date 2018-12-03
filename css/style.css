@@ -84,11 +84,34 @@ body {
   border-radius:80%;
 }
 
+.difficulty-btn {
+  position:absolute;
+  cursor:pointer;
+  height:60px;
+  width:60px;
+  border-radius:10%;
+  right: 30px;
+  bottom:30px;
+  background-color: var(--accent-color);
+  transition:opacity 4s, background-color 1s;
+  padding:10px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer {
+  fill: var(--main-color);
+  width:65%;
+  height:65%;
+  transition:1s;
+}
+
 .theme-btn {
-  bottom:20px;
-  left:20px;
+  bottom:30px;
+  left:30px;
   width:100px;
-  max-height:55px;
+  max-height:90px;
   border-radius:10px;
   background-color: var(--accent-color);
   position:absolute;
@@ -97,6 +120,7 @@ body {
   padding:20px 0 20px 0;
   transition:max-height 2s, opacity 4s, background-color 1s;
   overflow:hidden;
+  box-sizing: border-box;
 }
 
 .theme-btn:hover {
@@ -140,6 +164,10 @@ body {
   bottom:30px;
   transition:opacity 3s ease-in-out, background-color 1s;
   border-radius:10%;
+}
+
+.restart-btn > path {
+  fill: var(--main-color);
 }
 
 div.hidden {
@@ -262,7 +290,7 @@ div.finished {
   background-image: linear-gradient(to top right, #FFFF, #0000);
 }
 
-#countdown {
+.countdown {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -273,7 +301,7 @@ div.finished {
   z-index:-1;
 }
 
-#countdown > svg {
+.countdown > svg {
   position: absolute;
   width: 700px;
   height: 700px;
