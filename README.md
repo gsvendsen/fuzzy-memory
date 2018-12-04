@@ -10,7 +10,7 @@ It can be played at https://gsvendsen.github.io/projects/fuzzy-memory
 
 #### Features
 - Visual timer with a line growing around the memory board
-- Different themes to choose from through a theme querySelector
+- Different themes to choose from through a theme selector which saves your choice for next time
 - Ability to choose difficulty (timer speed)
 - Shuffle/restart button
 
