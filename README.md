@@ -1,6 +1,6 @@
 <h1 align="center">Fuzzy Memory</h1> <br>
 <p align="center">
-    <img alt="GIF of memory game" title="Fuzzy Memory" src="https://media.giphy.com/media/2ywgbqJMF7jI1dTyVR/giphy.gif" width="50%">
+    <img alt="GIF of memory game" title="Fuzzy Memory" src="https://gsvendsen.github.io/projects/fuzzy-memory" width="50%">
 </p>
 
 ### Introduction
@@ -11,8 +11,6 @@ Fuzzy Memory is an assignment where I had to make a memory game only using HTML,
 - Different themes to choose from through a theme querySelector
 - Ability to choose difficulty (timer speed)
 - Shuffle/restart button
-- Ability to mute all audio
-
 
 #### Testers
 - [Samuel Johansson](https://github.com/WebSamuel90)
