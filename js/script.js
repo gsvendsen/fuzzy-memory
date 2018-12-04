@@ -403,6 +403,28 @@ if(localStorage.getItem("theme")){
   changeTheme(localStorage.getItem("theme"));
 }
 
+// Shows cookie popup until its accepted
+if(!localStorage.getItem("accepted")){
+
+  const cookieDiv = document.createElement("div");
+  cookieDiv.classList.add("cookie-top");
+  const cookieText = document.createElement("p");
+  const cookieButton = document.createElement("button");
+  cookieText.textContent = "This website uses cookies to ensure you get the best experience on this website.";
+  cookieButton.textContent = "Accept";
+
+  cookieDiv.appendChild(cookieText);
+  cookieDiv.appendChild(cookieButton);
+  document.body.appendChild(cookieDiv);
+
+  const button = document.querySelector("button");
+  const cookieBar = document.querySelector(".cookie-top")
+  button.addEventListener("click", ()=>{
+    cookieBar.remove();
+    localStorage.setItem("accepted", "true");
+  })
+}
+
 playButton.addEventListener('click', countDown);
 
 restartButton.addEventListener('click', restart);

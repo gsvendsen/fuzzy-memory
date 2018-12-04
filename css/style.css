@@ -23,6 +23,28 @@ body {
   --accent-color: #EACDC2;
 }
 
+button {
+  color:var(--accent-color);
+  background-color: var(--main-color);
+  padding:10px 20px 10px 20px;
+  border:none;
+}
+
+.cookie-top {
+  background-color:var(--accent-color);
+  color:var(--main-color);
+  width:100%;
+  padding:10px;
+  height: auto;
+  position:fixed;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  box-sizing: border-box;
+  font-family:helvetica,sans-serif;
+}
+
 .memory-board {
   background-color: var(--accent-color);
   border-radius: 10%;
