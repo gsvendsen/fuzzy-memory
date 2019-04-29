@@ -6,7 +6,7 @@
 ### Introduction
 Fuzzy Memory is an assignment where I had to make a memory game only using HTML, CSS and JavaScript. The requirements were that the game randomized a minimum of 8 pairs of cards and had a restart button.
 
-It can be played at https://yrgo.github.io/labs/memory/
+It can be played at https://yrgo.github.io/portfolio/memory/
 
 #### Features
 - Visual timer with a line growing around the memory board
